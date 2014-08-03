@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta http-equiv="refresh" content="60">
+        <script type="text/javascript">
+		    setInterval(function() { document.getElementById("i1").src='current.jpg?' + Math.random(); }, 600);
+        </script>
+    </head>
+    <style>
+	    body { 
+	        white-space:nowrap; 
+	        margin: 0px; 
+	        padding: 0px; 
+	        padding-top:15px; 
+	        background:black; 
+	        color:white; 
+	    }
+        img { 
+            margin: 0px; 
+            padding: 0px; 
+        }
+    </style>
+    <body>
+        <!-- yep i used center, like it -->
+        <center><img id="i1" src="/ml/1/current.jpg"/></center>
+    </body>
+</html>
