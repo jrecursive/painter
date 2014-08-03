@@ -126,13 +126,15 @@ public class Painter {
     
     public static void main(String[] args) throws Exception {
         System.setProperty("java.awt.headless", "true"); 
-        if (args.length == 0) {
+        if (args.length < 2) {
             log.info("usage: painter.Painter <target-file> <tile-dir> <tile-size> <port>");
             System.exit(-1);
         }
         targetFn = args[0];
         processLibrary(args[1]);
-        Painter.tileSize = Integer.parseInt(args[2]);
+        if (args.length >= 3) {
+            Painter.tileSize = Integer.parseInt(args[2]);
+        }
         if (args.length == 4) {
             Painter.port = Integer.parseInt(args[3]);
         } else {

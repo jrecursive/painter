@@ -32,7 +32,7 @@ import javax.imageio.*;
 public class LMSFitnessFunction extends FitnessFunction {
     final private static Logger log =
         Logger.getLogger(LMSFitnessFunction.class.getName());
-    public static Map<String, BufferedImage> sliceCache = 
+    public static Map<String, BufferedImage> tileCache = 
         new HashMap<String, BufferedImage>();
     private final GAConfiguration gaConf;
     private final int[] targetPixels;
@@ -92,13 +92,13 @@ public class LMSFitnessFunction extends FitnessFunction {
                 IntegerGene gene = (IntegerGene) ch.getGene(i);
                 int fnn = gene.intValue();
                 final String sfn = Painter.slices.get(fnn);
-                if (sliceCache.get(sfn) == null) {
+                if (tileCache.get(sfn) == null) {
                     log.info("caching " + sfn);
                     BufferedImage z = ImageIO.read(
                         new File(Painter.slices.get(fnn)));
-                        sliceCache.put(sfn, z);
+                        tileCache.put(sfn, z);
                 }
-                BufferedImage slice = sliceCache.get(sfn);
+                BufferedImage slice = tileCache.get(sfn);
                 XY xy = gaConf.coords.get(i);
                 gr.drawImage(slice, xy.x, xy.y, null);
             }
